@@ -1,2 +1,11 @@
 # TaguchiGridSearch
 A grid search method that uses orthogonal arrays for efficient hyperparameter selection
+
+Parallel Gridsearch Optimization with orthogonal arrays¶
+Here we reproduce the methods used in the paper of Sano and Suzuki (2017) on gridsearch optimization using orthogonal arrays. We apply it on different datasets to determine its performance. We found that it vastly decreased the computation time needed by a factor of 12, while only have a slightly lower precision. We managed to increase the computation time of the SVR model even more by parallelizing the gridsearch methods.
+
+Furthermore we compared its performance against random methods and against the optimizers in the scikit-optimize package. We found that the orthogonal array methods significantly outperform the scikit-optimize methods in time while only having a slightly lower percision. The only methods that can sometimes be faster that the orthogonal array methods is the Bayes Classifier. However, compared to all the other methods, its performance was so poor that we disregarded it as a viable option.
+
+Furthermore we found that for the datasets that we used the random method had a slightly better performance than the orthogonal array methods with a similar run time (for the first random method). This is the opposite of what the researchers found in the paper. It should be noted however that we do not make use of any cross validation as the authors have done, but rather we apply the method directly. Furthermore the authors do not define clearly which how they implemented their random methods. For comparison we therefore use to random methods. One were we randomly sample parameters from a predefined array and one where we randomly sample parameter values from a uniform distribution.
+
+Finally we would like to highlight the potential use case for both the orthogonal and the random method in a distributed setting. The scikit-optimize package uses gradient decent type methods to calculate the optimal parameter levels, however this is very hard to apply in a distributed setting. Given the fact that these methods perform quite well, we believe it could be a good option to replace the standard gridsearch as it could save a lot of computation time.
