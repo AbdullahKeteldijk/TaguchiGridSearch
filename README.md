@@ -1,8 +1,8 @@
 # TaguchiGridSearch
 A grid search method that uses orthogonal arrays for efficient hyperparameter selection
 
-Parallel Gridsearch Optimization with orthogonal arrays¶
-Here we reproduce the methods used in the paper of Sano and Suzuki (2017) on gridsearch optimization using orthogonal arrays. We apply it on different datasets to determine its performance. We found that it vastly decreased the computation time needed by a factor of 12, while only have a slightly lower precision. We managed to increase the computation time of the SVR model even more by parallelizing the gridsearch methods.
+Parallel Gridsearch Optimization with orthogonal arrays.
+Here we reproduce the methods used in the paper of Sano and Suzuki (2017) on gridsearch optimization using orthogonal arrays. We apply it on different datasets to determine its performance. We found that it vastly decreased the computation time needed by a factor of 12, while only have a slightly lower precision. We managed to increase the computation time of the Support Vector Regression (SVR) model even more by parallelizing the gridsearch methods.
 
 Furthermore we compared its performance against random methods and against the optimizers in the scikit-optimize package. We found that the orthogonal array methods significantly outperform the scikit-optimize methods in time while only having a slightly lower percision. The only methods that can sometimes be faster that the orthogonal array methods is the Bayes Classifier. However, compared to all the other methods, its performance was so poor that we disregarded it as a viable option.
 
